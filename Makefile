@@ -1,9 +1,12 @@
 SRC:=coverity_test.c
 
-all:	gcc clang coverity
+all:	normal
+	
+normal:
+	gcc -Wall -Wextra -pedantic ${SRC}
 
 gcc:
-	gcc -fanalyzer -Wall -Wextra -pedantic -fanalyser ${SRC}
+	gcc -Wall -Wextra -pedantic -fanalyser ${SRC}
 
 clang:
 	scan-build-10 gcc -fanalyzer -Wall -Wextra -pedantic -fanalyser ${SRC}
